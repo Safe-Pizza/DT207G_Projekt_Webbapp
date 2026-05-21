@@ -77,6 +77,8 @@ span.letter-red {
     color: #C0392B;
 }
 
+/*CLASSES*/
+
 /*button classes*/
 .button-red {
     background-color: #8E2424;
@@ -104,6 +106,10 @@ span.letter-red {
     text-align: center;
     border: 2px solid #8E2424;
     border-radius: 5px;
+}
+/*hidden class*/
+.hidden {
+    display: none;
 }
 
 /*navigation*/
@@ -199,7 +205,7 @@ h2.text-center {
     text-align: center;
 }
 
-/*li buttons main*/
+/*li buttons main home*/
 main ul {
     list-style: none;
     padding: 0;
@@ -236,3 +242,5 @@ main a {
     width: 100%;
     height: auto;
 }
+
+/*ADMIN-PAGE*/

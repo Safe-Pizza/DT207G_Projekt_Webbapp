@@ -1,12 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Elsie:wght@400;900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
+:root {
+    font-size: 62.5%;
+}
+
+/*settings base*/
 body {
     background-color: #000000;
     color: #B0B0B0;
     font-family: "Roboto Mono", monospace;
 }
 
-/*Rubriker*/
+#container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/*Font-sizes*/
+h1 {
+    font-size: 5rem;
+}
+
+h2 {
+    font-size: 9.6rem;
+}
+
+p {
+    font-size: 2rem;
+}
+
+header a {
+    font-size: 2rem;
+}
+
+main a {
+    font-size: 2rem;
+}
+
+footer p {
+    font-size: 3.2rem;
+}
+
+footer a {
+    font-size: 1.6rem;
+}
+
+/*Font styles*/
 h1,
 h2,
 h3 {
@@ -14,6 +53,57 @@ h3 {
     font-family: "Elsie", serif;
     font-weight: 400;
     font-style: normal;
+}
+
+main a {
+    font-weight: 500;
+    color: #F5F5F5;
+    text-decoration: none;
+}
+
+#order-link a {
+    font-weight: 500;
+    color: #F5F5F5;
+}
+
+footer p {
+    color: #F5F5F5;
+    font-family: "Elsie", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+span.letter-red {
+    color: #C0392B;
+}
+
+/*button classes*/
+.button-red {
+    background-color: #8E2424;
+    box-sizing: border-box;
+    padding: 0.6rem;
+    min-width: 130px;
+    max-width: 130px;
+    height: 50px;
+    cursor: pointer;
+    color: white;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+}
+
+.button-black {
+    background-color: #121212;
+    box-sizing: border-box;
+    padding: 0.4rem;
+    min-width: 130px;
+    max-width: 130px;
+    height: 50px;
+    cursor: pointer;
+    color: white;
+    text-align: center;
+    border: 2px solid #8E2424;
+    border-radius: 5px;
 }
 
 /*navigation*/
@@ -36,24 +126,27 @@ nav a {
     color: #F5F5F5;
 }
 
+.active-page {
+    border-bottom: 2px solid #C0392B;
+}
+
 #order-link a {
     text-decoration: none;
     color: #F5F5F5;
 }
 
-/*settings base*/
-#container {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
+/*Grid settings header*/
 header {
     max-width: 1000px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 20% 63% 15%;
     align-items: center;
-    gap: 10px;
+    gap: 1%;
+}
+
+.logotype {
+    justify-self: center;
 }
 
 .main-nav {
@@ -64,6 +157,78 @@ header {
     justify-self: center;
 }
 
+#order-link ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#order-link li {
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+#order-link a {
+    display: block;
+    text-decoration: none;
+    padding: 0.6rem;
+    text-align: center;
+    color: #F5F5F5;
+}
+
+/*settings footer*/
+footer {
+    display: flex;
+    gap: 1%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+footer nav ul {
+    display: flex;
+    gap: 2px;
+}
+
+/*Settings main*/
 main {
     background-color: #121212;
+    padding: 1%;
+}
+
+/*li buttons main*/
+main ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+main li {
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+main a {
+    display: block;
+    text-decoration: none;
+    padding: 0.6rem;
+    text-align: center;
+    color: #F5F5F5;
+}
+
+/*grid main home*/
+#home section {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 65% 35%;
+    gap: 1%
+}
+
+#main-image {
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+/*img main home*/
+#home img {
+    width: 100%;
+    height: auto;
 }

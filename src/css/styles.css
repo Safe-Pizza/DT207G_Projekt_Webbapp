@@ -195,6 +195,10 @@ main {
     padding: 1%;
 }
 
+h2.text-center {
+    text-align: center;
+}
+
 /*li buttons main*/
 main ul {
     list-style: none;

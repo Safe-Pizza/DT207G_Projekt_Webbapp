@@ -13,8 +13,8 @@
     <div class="logotype">
       <h1>S<span class="letter-red">U</span>SHI <br><span class="letter-red">B</span>ITES</h1>
     </div>
-    <div class="main-nav">
-      <nav>
+    <div class="main-nav overlay">
+      <nav class="overlay-content">
         <ul>
           <li><a href="./">HEM</a></li>
           <li><a href="./menu">MENY</a></li>
@@ -24,7 +24,9 @@
       </nav>
     </div>
     <div id="order-link">
-      <a href="./order">BESTÄLL</a>
+      <ul>
+        <li class="button-red"><a href="./order">BESTÄLL</a></li>
+      </ul>
     </div>
   </header>
   <div id="container">
@@ -76,7 +78,13 @@
         </nav>
       </div>
     </footer>
-
+    <div class="container-navbar">
+      <div id="hamburger-bottom">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
   </div>
   <script type="module" src="/src/js/main.js"></script>
 </body>

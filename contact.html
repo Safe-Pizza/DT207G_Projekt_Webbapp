@@ -46,18 +46,34 @@
         <div class="buttons-main-contact">
           <ul>
             <li class="button-red"><a href="#">RING</a></li>
-            <li class="button-black"><a href="#">FORMULÄR</a></li>
+            <li id="button-contact-form" class="button-black"><a href="#contact-form">FORMULÄR</a></li>
           </ul>
         </div>
         <div class="separator"></div>
-        <div id="contact-image">
-          <picture>
-            <source srcset="images/image_contact.webp" type="image/webp">
-            <img src="iamges/image_contact.jpg" alt="många sushibiter med olika topping placerade på tallrik">
-          </picture>
+        <div id="contact-form" class="hidden">
+          <h3>K<span class="letter-red">O</span>NTAKTFORMULÄR</h3>
+          <label for="table-name">Namn: </label><br>
+          <input type="text" id="table-name"><br>
+          <label for="table-email">Mejladress: </label><br>
+          <input type="text" id="table-email"><br>
+          <label for="table-phone">Telefonnummer: </label><br>
+          <input type="text" id="table-phone"><br>
+          <label for="table-misc">Skriv dina frågor: </label><br>
+          <textarea id="table-misc"></textarea><br>
+          <div class="buttons-main-contact">
+            <button id="button-submit-contact" class="button-red">SKICKA</button>
+
+          </div>
         </div>
+        <div class="separator"></div>
       </section>
     </main>
+    <div id="contact-image">
+      <picture>
+        <source srcset="images/image_contact.webp" type="image/webp">
+        <img src="iamges/image_contact.jpg" alt="många sushibiter med olika topping placerade på tallrik">
+      </picture>
+    </div>
     <footer>
       <div class="copyright">
         <p>&copy; S<span class="letter-red">U</span>SHI <span class="letter-red">B</span>ITES 2026</p>
@@ -84,6 +100,7 @@
     </div>
   </div>
   <script type="module" src="/src/js/main.js"></script>
+  <script type="module" src="/src/js/contact.js"></script>
 </body>
 
 </html>

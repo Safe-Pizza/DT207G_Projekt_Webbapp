@@ -37,10 +37,12 @@
         <p>Denna sida är ett administrationsverktyg för att hantera menyn. Tänk på att alla ändringar i menyn visas
           direkt på den externa webbplatsen.</p>
         <div class="buttons-main-admin">
-          <button class="button-red">VISA MENY</button>
-          <button class="button-black">LÄGG TILL</button>
+          <button id="admin-show-menu" class="button-red">VISA MENY</button>
+          <button id="admin-add" class="button-black">LÄGG TILL</button>
         </div>
-        <div class="form hidden">
+        <div class="separator"></div>
+        <div id="admin-add-form" class="form hidden">
+          <h3>LÄGG TILL NY RÄTT</h3>
           <form id="add-form">
             <label for="title">Titel</label><br>
             <input type="text" id="title"><br>
@@ -53,7 +55,7 @@
             <label for="allergy">Allergener</label><br>
             <input type="text" id="allergy"><br>
             <label for="image">Bild</label><br>
-            <input type="file" id="image"><br>
+            <input type="file" id="image"><br><br>
             <button class="button-red" type="submit">LÄGG TILL</button>
           </form>
         </div>
@@ -88,6 +90,7 @@
     </div>
   </div>
   <script type="module" src="/src/js/main.js"></script>
+  <script type="module" src="/src/js/apiAdmin.js"></script>
 </body>
 
 </html>

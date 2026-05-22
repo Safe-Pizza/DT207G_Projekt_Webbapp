@@ -170,7 +170,7 @@ header {
     max-width: 1000px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 20% 63% 15%;
+    grid-template-columns: 20% 58% 20%;
     align-items: center;
     gap: 1%;
 }
@@ -187,6 +187,7 @@ header {
     justify-self: center;
 }
 
+/*Settings BESTÄLL buttom*/
 #order-link ul {
     list-style: none;
     margin: 0;
@@ -204,6 +205,10 @@ header {
     padding: 0.6rem;
     text-align: center;
     color: #F5F5F5;
+}
+
+header .button-red {
+    margin-right: 0px !important;
 }
 
 /*settings footer*/
@@ -288,7 +293,7 @@ input[type="password"] {
     box-shadow: 2px 0px 2px rgba(0, 0, 0, 0.1);
 }
 
-/*li buttons main home*/
+/*li buttons main*/
 main ul {
     list-style: none;
     padding: 0;
@@ -308,6 +313,7 @@ main a {
     color: #F5F5F5;
 }
 
+/*GRIDS*/
 /*grid main home*/
 #home section {
     max-width: 100%;
@@ -318,12 +324,6 @@ main a {
 
 #main-image {
     grid-area: 1 / 2 / 2 / 3;
-}
-
-/*img main home*/
-#home img {
-    width: 100%;
-    height: auto;
 }
 
 /*grid main table*/
@@ -358,7 +358,13 @@ main a {
     justify-content: center;
 }
 
-/*ADMIN-PAGE*/
+/*HOME-PAGE*/
+/*img main home*/
+#home img {
+    width: 100%;
+    height: auto;
+}
+
 
 /*CONTACT-PAGE*/
 /*img main contact*/
@@ -456,5 +462,10 @@ main a {
     footer nav ul {
         flex-direction: column;
         gap: 2px;
+    }
+
+    /*settings home*/
+    #main-image {
+        display: none;
     }
 }

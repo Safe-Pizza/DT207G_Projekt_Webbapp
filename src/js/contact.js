@@ -1,3 +1,5 @@
+"use strict";
+
 document.querySelector("#button-contact-form").addEventListener("click", toggleContactForm);
 
 //togglefunktion för kontaktformulär

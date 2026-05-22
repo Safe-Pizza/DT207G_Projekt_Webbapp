@@ -60,6 +60,7 @@ h3 {
     font-family: "Elsie", serif;
     font-weight: 400;
     font-style: normal;
+    margin-bottom: 3rem;
 }
 
 p {
@@ -327,6 +328,14 @@ main a {
 
 /*grid main table*/
 #contact section {
+    max-width: 100%;
+    display: grid;
+    gap: 1%;
+    justify-content: center;
+}
+
+/*grid main allergy*/
+#allergy section {
     max-width: 100%;
     display: grid;
     gap: 1%;

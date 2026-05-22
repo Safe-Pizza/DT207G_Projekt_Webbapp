@@ -31,23 +31,26 @@ function writeMealsOfMenu(meals) {
     meals.forEach(meal => {
         //skapa element
         let articleEl = document.createElement("article");
+        let divEl = document.createElement("div");
         let deleteButtonEl = document.createElement("button");
         let aEl = document.createElement("a");
 
         let content = `
-        <h3>${meal.title.toUpperCase()}</h3><span>${meal.price}</span>
+        <h3 class="small-h3">${meal.title.toUpperCase()}</h3><span class="admin-price">${meal.price}</span>
         <p>${meal.description}</p>
        `;
 
         //lägg till attribut och text
         aEl.href = `#form-change`;
         aEl.classList.add("button-black");
+        aEl.classList.add("a-button");
         aEl.innerHTML = "ÄNDRA";
         deleteButtonEl.classList.add("button-red");
         deleteButtonEl.innerHTML = "TA BORT";
+        divEl.appendChild(deleteButtonEl, aEl);
+        divEl.appendChild(aEl);
         articleEl.innerHTML = content;
-        articleEl.appendChild(deleteButtonEl);
-        articleEl.appendChild(aEl);
+        articleEl.appendChild(divEl);
 
         //skriv ut till DOM
         resultEl.appendChild(articleEl);

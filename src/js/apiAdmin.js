@@ -10,7 +10,7 @@ if (localStorage.getItem("admin_token")) {
 //funktion för att hämta användare från webbtjänst
 async function fetchMenu() {
     try {
-        const response = await fetch("http://localhost:5000/api/menu");
+        const response = await fetch(`http://localhost:5000/api/menu`);
         const data = await response.json();
 
         if (response.ok) {
@@ -57,7 +57,7 @@ function writeMealsOfMenu(meals) {
 
         //eventlyssnare för delete-knapp
         deleteButtonEl.addEventListener("click", () => {
-            console.log(`Delete id: ${meal.id}`)
+            deleteMeal(meal.id)
         });
 
         //eventlyssnare för ändra
@@ -65,6 +65,20 @@ function writeMealsOfMenu(meals) {
             console.log(`Ändra id: ${meal.id}`);
         })
     })
+}
+
+//funktion för DELETE i API
+async function deleteMeal(id) {
+    try {
+        const res = await fetch(`http://localhost:5000/api/menu/${id}`, {
+            method: "DELETE",
+        });
+
+        const data = await res.json();
+        fetchMenu();
+    } catch (error) {
+        console.error(`Felmeddelande ${error}`);
+    }
 }
 
 //togglefunktion för lägg till formulär

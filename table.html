@@ -35,14 +35,21 @@
         <h2 class="text-center">B<span class="letter-red">O</span>KA <span class="letter-red">B</span>ORD</h2>
         <p>Skicka en bokningsförfrågan via formuläret så återkommer vi till dig inom kort.</p>
         <div id="table-form">
-          <label for="table-name">Namn: </label><br>
-          <input type="text" id="table-name"><br>
-          <label for="table-email">Mejladress: </label><br>
-          <input type="text" id="table-email"><br>
-          <label for="table-phone">Telefonnummer: </label><br>
-          <input type="text" id="table-phone"><br>
-          <label for="table-persons">Antal personer: </label><br>
-          <select id="table-persons">
+          <label for="table-name">Namn: </label>
+          <br>
+          <input type="text" id="table-name" name="table-name">
+          <br>
+          <label for="table-email">Mejladress: </label>
+          <br>
+          <input type="text" id="table-email" name="table-email">
+          <br>
+          <label for="table-phone">Telefonnummer: </label>
+          <br>
+          <input type="text" id="table-phone" name="table-phone">
+          <br>
+          <label for="table-persons">Antal personer: </label>
+          <br>
+          <select id="table-persons" name="table-persons">
             <option selected disabled>Välj antal personer</option>
             <option>1</option>
             <option>2</option>
@@ -54,7 +61,7 @@
             <option>8</option>
           </select><br>
           <label for="table-misc">Övriga önskemål: </label><br>
-          <textarea id="table-misc"></textarea><br>
+          <textarea id="table-misc" name="table-misc"></textarea><br>
           <div class="buttons-main-table">
             <button id="button-submit-table" class="button-red">SKICKA</button>
           </div>

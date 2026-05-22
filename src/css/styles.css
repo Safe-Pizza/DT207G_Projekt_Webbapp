@@ -361,9 +361,8 @@ main a {
 /*ADMIN-PAGE*/
 
 /*CONTACT-PAGE*/
-
 /*img main contact*/
-#contact img {
+#contact-image img {
     width: 100%;
     height: auto;
 }

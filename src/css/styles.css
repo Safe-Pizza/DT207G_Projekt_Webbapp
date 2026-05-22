@@ -293,6 +293,34 @@ input[type="password"] {
     box-shadow: 2px 0px 2px rgba(0, 0, 0, 0.1);
 }
 
+input[type="number"] {
+    font-size: 2rem;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    color: #F5F5F5;
+    background-color: #1E1E1E;
+    border-radius: 5px;
+    border: 1px solid #B0B0B0;
+    box-shadow: 2px 0px 2px rgba(0, 0, 0, 0.1);
+}
+
+input[type="file"] {
+    font-size: 2rem;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    color: #F5F5F5;
+    background-color: #1E1E1E;
+    border-radius: 5px;
+    border: 1px solid #B0B0B0;
+    box-shadow: 2px 0px 2px rgba(0, 0, 0, 0.1);
+}
+
 /*li buttons main*/
 main ul {
     list-style: none;

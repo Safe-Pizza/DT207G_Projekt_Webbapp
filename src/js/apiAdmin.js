@@ -4,6 +4,7 @@
 if (localStorage.getItem("admin_token")) {
     document.querySelector("#admin-show-menu").addEventListener("click", fetchMenu);
     document.querySelector("#admin-add").addEventListener("click", toggleAddForm);
+    document.querySelector("#add-form").addEventListener("submit", addMeal);
 }
 
 
@@ -16,6 +17,42 @@ async function fetchMenu() {
         if (response.ok) {
             writeMealsOfMenu(data);
         } else return document.getElementById("admin-result").innerHTML = "";
+    } catch (error) {
+        console.error(`Felmeddelande ${error}`);
+    }
+}
+
+async function createMeal(mealData) {
+    try {
+        const res = await fetch(`http://localhost:5000/api/menu`, {
+            method: "POST",
+            body: mealData,
+            headers: {
+                "authorization": `Bearer ${localStorage.getItem("admin_token")}`
+            }
+        })
+
+        if (res.ok) {
+            fetchMenu();
+
+        }
+    } catch (err) {
+        console.log("Något blev fel");
+    }
+}
+
+//funktion för DELETE i API
+async function deleteMeal(id) {
+    try {
+        const res = await fetch(`http://localhost:5000/api/menu/${id}`, {
+            method: "DELETE",
+            headers: {
+                "authorization": `Bearer ${localStorage.getItem("admin_token")}`
+            }
+        });
+
+        const data = await res.json();
+        fetchMenu();
     } catch (error) {
         console.error(`Felmeddelande ${error}`);
     }
@@ -67,17 +104,46 @@ function writeMealsOfMenu(meals) {
     })
 }
 
-//funktion för DELETE i API
-async function deleteMeal(id) {
-    try {
-        const res = await fetch(`http://localhost:5000/api/menu/${id}`, {
-            method: "DELETE",
-        });
+async function addMeal(e) {
+    e.preventDefault();
+    //Formulärdata
+    let title = document.forms["add-form"]["title"];
+    let description = document.forms["add-form"]["description"];
+    let price = document.forms["add-form"]["price"].value;
+    let category = document.forms["add-form"]["category"];
 
-        const data = await res.json();
-        fetchMenu();
-    } catch (error) {
-        console.error(`Felmeddelande ${error}`);
+    //Varibel för errors-element DOM
+    let errorsEl = document.getElementById("errors");
+    errorsEl.innerHTML = "";
+
+    //Array för felhantering
+    let errors = [];
+
+    //Validering av formulärdata, kontroll ej tom + datumvalidering
+    if (title.value === "") {
+        errors.push("<li>Du måste fylla i titel</li>");
+    }
+
+    if (description.value === "") {
+        errors.push("<li>Du måste fylla i beskrivning</li>");
+    }
+    if (price.length < 1) {
+        errors.push("<li>Du måste fylla i pris</li>");
+    }
+    if (category.value === "") {
+        errors.push("<li>Du måste fylla i kategori</li>");
+    }
+
+    //Skriv ut eventuella felmeddelanden
+    if (errors.length !== 0) {
+        errors.forEach(error => {
+            errorsEl.innerHTML += error;
+        })
+    } else { //Vid inga felmeddelanden lägg till i API
+        const formData = new FormData(e.target);
+        document.querySelector("#add-form").reset();
+        document.querySelector("#admin-add-form").style.display = "none";
+        createMeal(formData);
     }
 }
 

@@ -40,6 +40,10 @@ label {
     font-size: 2rem;
 }
 
+button {
+    font-size: 2rem;
+}
+
 header a {
     font-size: 2rem;
 }
@@ -80,6 +84,11 @@ main a {
 #order-link a {
     font-weight: 500;
     color: #F5F5F5;
+}
+
+button {
+    font-family: "Roboto Mono", monospace;
+    font-weight: 500;
 }
 
 footer p {

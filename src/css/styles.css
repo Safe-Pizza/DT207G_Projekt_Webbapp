@@ -532,6 +532,21 @@ main#order section div article button {
     font-size: 3rem;
 }
 
+/*ALLERGY-PAGE*/
+/*ul li allergy*/
+#allergy ul li {
+    font-size: 1.6rem;
+    color: #B0B0B0;
+    font-family: "Roboto Mono", monospace;
+    margin-bottom: 1rem;
+}
+
+/*img allergy*/
+#allergy-image img {
+    width: 100%;
+    height: auto;
+}
+
 /*ADMIN-PAGE*/
 main#admin article {
     display: grid;

@@ -2,20 +2,20 @@
 
 //Kontrollera token i localStorage, om token finns lägg till eventlyssnare på knappar
 if (localStorage.getItem("admin_token")) {
-    document.querySelector("#admin-show-menu").addEventListener("click", fetchMenu);
+    document.querySelector("#admin-show-menu").addEventListener("click", fetchMenuAdmin);
     document.querySelector("#admin-add").addEventListener("click", toggleAddForm);
     document.querySelector("#add-form").addEventListener("submit", addMeal);
 }
 
 
 //funktion för att hämta meny från webbtjänst
-async function fetchMenu() {
+async function fetchMenuAdmin() {
     try {
         const response = await fetch(`http://localhost:5000/api/menu`);
         const data = await response.json();
 
         if (response.ok) {
-            writeMealsOfMenu(data);
+            writeMealsOfMenuAdmin(data);
         } else return document.getElementById("admin-result").innerHTML = "";
     } catch (error) {
         console.error(`Felmeddelande ${error}`);
@@ -60,7 +60,7 @@ async function deleteMeal(id) {
 }
 
 //skriv ut meny med rätter till DOM
-function writeMealsOfMenu(meals) {
+function writeMealsOfMenuAdmin(meals) {
     let resultEl = document.getElementById("admin-result");
 
     resultEl.innerHTML = "";

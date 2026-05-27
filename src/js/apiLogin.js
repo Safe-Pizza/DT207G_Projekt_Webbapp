@@ -41,10 +41,10 @@ async function requestLogin(username, password) {
                 password: password
             })
         })
-
+        //vid misslyckat login, felmeddlande
         if (!res.ok) {
             throw new Error("Misslyckades att logga in");
-        } else {
+        } else { //vid lyckat login, spara token i localStorage och skicka användare till admin.html
             const data = await res.json();
             localStorage.setItem("admin_token", data.token);
             window.location.href = "./admin.html";

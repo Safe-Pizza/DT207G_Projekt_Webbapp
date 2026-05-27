@@ -103,7 +103,7 @@ function writeMealsOfMenuAdmin(meals) {
 
         //eventlyssnare för ändra knapp
         aEl.addEventListener("click", () => {
-            console.log(`Ändra id: ${meal.id}`);
+            changeMeal(meal);
         })
     })
 }
@@ -124,7 +124,7 @@ async function addMeal(e) {
     //Array för felhantering
     let errors = [];
 
-    //Validering av formulärdata, kontroll ej tom + datumvalidering
+    //Validering av formulärdata, kontroll ej tom
     if (title.value === "") {
         errors.push("<li>Du måste fylla i titel</li>");
     }
@@ -150,6 +150,83 @@ async function addMeal(e) {
         document.querySelector("#admin-add-form").style.display = "none";
         createMeal(formData);
     }
+}
+
+async function changeMeal(mealChange) {
+    let changeFormEl = document.getElementById("admin-change-form");
+    changeFormEl.classList.remove("hidden");
+
+    //skapa knapp för ändring
+    let changeButtonEl = document.createElement("button");
+    changeButtonEl.innerHTML = "Ändra";
+
+    //lägg till knapp i DOM
+    changeFormEl.appendChild(changeButtonEl);
+
+    //Formulärdata
+    let title = document.getElementById("change-title");
+    let description = document.getElementById("change-description");
+    let price = document.getElementById("change-price");
+    let category = document.getElementById("change-category");
+    let allergy = document.getElementById("change-allergy");
+
+    //fyll i data från API
+    title.value = mealChange.title;
+    description.value = mealChange.description;
+    price.value = mealChange.price;
+    category.value = mealChange.category;
+    allergy.value = mealChange.allergy;
+
+    changeButtonEl.addEventListener("click", () => {
+        //Varibel för errors-element DOM
+        let errorsEl = document.getElementById("errors-change");
+        errorsEl.innerHTML = "";
+
+        //Array för felhantering
+        let errors = [];
+
+    //Validering av formulärdata, kontroll ej tom
+    if (title.value === "") {
+        errors.push("<li>Du måste fylla i titel</li>");
+    }
+
+    if (description.value === "") {
+        errors.push("<li>Du måste fylla i beskrivning</li>");
+    }
+    if (price.length < 1) {
+        errors.push("<li>Du måste fylla i pris</li>");
+    }
+    if (category.value === "") {
+        errors.push("<li>Du måste fylla i kategori</li>");
+    }
+
+        //Skriv ut eventuella felmeddelanden
+        if (errors.length !== 0) {
+            errors.forEach(error => {
+                errorsEl.innerHTML += error;
+            })
+        } else { //Vid inga felmeddelanden ändra i API
+
+            //göm formulär
+            changeFormEl.classList.add("hidden");
+            //ta bort knapp
+            changeButtonEl.remove();
+
+            //skapa job-objekt
+            let changedMeal = {
+                title: title.value,
+                description: description.value,
+                price: price.value,
+                category: category.value,
+                allergy: allergy.value,
+                image: image.value
+            }
+
+            //kör funktion för ändring, skicka med id och jobb-objekt
+            //changeJob(meal.id, changedMeal);
+            console.log(changedMeal);
+        }
+    })
 }
 
 //togglefunktion för lägg till formulär

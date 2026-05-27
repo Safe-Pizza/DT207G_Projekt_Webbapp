@@ -43,7 +43,7 @@
         <div class="separator"></div>
         <div id="admin-add-form" class="form hidden">
           <ul id="errors">
-            
+
           </ul>
           <h3>LÄGG TILL NY RÄTT</h3>
           <form id="add-form">
@@ -72,6 +72,38 @@
             <input type="file" id="image" name="image" accept="image/jpeg, image/png, image/gif">
             <br><br>
             <button class="button-red" type="submit">LÄGG TILL</button>
+          </form>
+        </div>
+        <div id="admin-change-form" class="form hidden">
+          <ul id="errors-change">
+
+          </ul>
+          <h3>ÄNDRA RÄTT</h3>
+          <form id="change-form">
+            <label for="change-title">Titel</label>
+            <br>
+            <input type="text" id="change-title" name="change-title">
+            <br>
+            <label for="change-description">Beskrivning</label>
+            <br>
+            <textarea id="change-description" name="change-description"></textarea>
+            <br>
+            <label for="change-price">Pris</label>
+            <br>
+            <input type="number" id="change-price" name="change-price">
+            <br>
+            <label for="change-category">Kategori</label>
+            <br>
+            <input type="text" id="change-category" name="change-category">
+            <br>
+            <label for="change-allergy">Allergener</label>
+            <br>
+            <input type="text" id="change-allergy" name="change-allergy">
+            <br>
+            <label for="change-image">Bild</label>
+            <br>
+            <input type="file" id="change-image" name="change-image" accept="image/jpeg, image/png, image/gif">
+            <br>
           </form>
         </div>
         <div class="separator"></div>

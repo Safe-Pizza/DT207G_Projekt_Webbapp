@@ -1,0 +1,41 @@
+"use strict";
+
+fetchMenu();
+
+//funktion för att hämta meny från webbtjänst
+async function fetchMenu() {
+    try {
+        const response = await fetch(`http://localhost:5000/api/menu`);
+        const data = await response.json();
+
+        if (response.ok) {
+            writeMealsOfMenu(data);
+        } else return document.getElementById("menu-result").innerHTML = "";
+    } catch (error) {
+        console.error(`Felmeddelande ${error}`);
+    }
+}
+
+//skriv ut meny med rätter till DOM
+function writeMealsOfMenu(meals) {
+    let resultEl = document.getElementById("menu-result");
+
+    resultEl.innerHTML = "";
+
+    //loop för utskrift
+    meals.forEach(meal => {
+        //skapa element
+        let articleEl = document.createElement("article");
+
+        let content = `
+        <h3 class="small-h3">${meal.title.toUpperCase()}</h3><span class="admin-price">${meal.price}</span>
+        <p>${meal.description}</p>
+       `;
+
+        //lägg till attribut och text
+        articleEl.innerHTML = content;
+
+        //skriv ut till DOM
+        resultEl.appendChild(articleEl);
+    })
+}

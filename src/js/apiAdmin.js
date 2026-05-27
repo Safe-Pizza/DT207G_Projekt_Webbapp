@@ -1,6 +1,6 @@
 "use strict";
 
-//Kontrollera token i localStorage och hämta användare om token finns
+//Kontrollera token i localStorage, om token finns lägg till eventlyssnare på knappar
 if (localStorage.getItem("admin_token")) {
     document.querySelector("#admin-show-menu").addEventListener("click", fetchMenu);
     document.querySelector("#admin-add").addEventListener("click", toggleAddForm);
@@ -8,7 +8,7 @@ if (localStorage.getItem("admin_token")) {
 }
 
 
-//funktion för att hämta användare från webbtjänst
+//funktion för att hämta meny från webbtjänst
 async function fetchMenu() {
     try {
         const response = await fetch(`http://localhost:5000/api/menu`);
@@ -22,6 +22,7 @@ async function fetchMenu() {
     }
 }
 
+//funktion för POST i API, lägg till rätt i meny
 async function createMeal(mealData) {
     try {
         const res = await fetch(`http://localhost:5000/api/menu`, {
@@ -41,7 +42,7 @@ async function createMeal(mealData) {
     }
 }
 
-//funktion för DELETE i API
+//funktion för DELETE i API, ta bort rätt i meny
 async function deleteMeal(id) {
     try {
         const res = await fetch(`http://localhost:5000/api/menu/${id}`, {
@@ -58,7 +59,7 @@ async function deleteMeal(id) {
     }
 }
 
-//skriv ut användare till DOM
+//skriv ut meny med rätter till DOM
 function writeMealsOfMenu(meals) {
     let resultEl = document.getElementById("admin-result");
 
@@ -97,13 +98,14 @@ function writeMealsOfMenu(meals) {
             deleteMeal(meal.id)
         });
 
-        //eventlyssnare för ändra
+        //eventlyssnare för ändra knapp
         aEl.addEventListener("click", () => {
             console.log(`Ändra id: ${meal.id}`);
         })
     })
 }
 
+//hämta och validera formulärdata, vid inga felmeddelanden skicka till API
 async function addMeal(e) {
     e.preventDefault();
     //Formulärdata

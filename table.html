@@ -37,15 +37,15 @@
         <div id="table-form">
           <label for="table-name">Namn: </label>
           <br>
-          <input type="text" id="table-name" name="table-name">
+          <input type="text" id="table-name" name="table-name" required>
           <br>
           <label for="table-email">Mejladress: </label>
           <br>
-          <input type="text" id="table-email" name="table-email">
+          <input type="text" id="table-email" name="table-email" required>
           <br>
           <label for="table-phone">Telefonnummer: </label>
           <br>
-          <input type="text" id="table-phone" name="table-phone">
+          <input type="text" id="table-phone" name="table-phone" required>
           <br>
           <label for="table-persons">Antal personer: </label>
           <br>
@@ -65,6 +65,7 @@
           <div class="buttons-main-table">
             <button id="button-submit-table" class="button-red">SKICKA</button>
           </div>
+          <div id="table-message"></div>
         </div>
         <div class="separator"></div>
 
@@ -97,6 +98,7 @@
     </div><!--Slut hamburgermeny-->
   </div><!--Slut container-->
   <script type="module" src="/src/js/main.js"></script>
+  <script type="module" src="/src/js/table.js"></script>
 </body>
 
 </html>

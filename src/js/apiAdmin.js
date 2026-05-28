@@ -93,14 +93,25 @@ function writeMealsOfMenuAdmin(meals) {
         let divEl = document.createElement("div");
         let deleteButtonEl = document.createElement("button");
         let aEl = document.createElement("a");
+        let content = "";
 
-        let content = `
+        if(meal.image) {
+
+        content = `
         <h3 class="small-h3">${meal.title.toUpperCase()}</h3><span class="admin-price">${meal.price}:-</span>
         <p class="admin-description"><strong>Beskrivning:</strong> <br>${meal.description}</p>
         <p class="admin-category"><strong>Kategori:</strong>    ${meal.category}</p>
         <p class="admin-allergy"><strong>Allergener:</strong> ${meal.allergy}</p>
         <img src="${meal.image}" alt="${meal.title}">
        `;
+       } else {
+        content = `
+        <h3 class="small-h3">${meal.title.toUpperCase()}</h3><span class="admin-price">${meal.price}:-</span>
+        <p class="admin-description"><strong>Beskrivning:</strong> <br>${meal.description}</p>
+        <p class="admin-category"><strong>Kategori:</strong>    ${meal.category}</p>
+        <p class="admin-allergy"><strong>Allergener:</strong> ${meal.allergy}</p>
+       `;
+       }
 
         //lägg till attribut och text
         aEl.href = `#admin-change-form`;

@@ -19,6 +19,7 @@ async function fetchMenuOrder() {
 //skriv ut meny med rätter till DOM
 function writeMealsOfMenuOrder(meals) {
     let resultEl = document.getElementById("order-result");
+    let content = "";
 
     resultEl.innerHTML = "";
 
@@ -26,14 +27,23 @@ function writeMealsOfMenuOrder(meals) {
     meals.forEach(meal => {
         //skapa element
         let articleEl = document.createElement("article");
-
-        let content = `
+        if (meal.image) {
+            content = `
         <img src="${meal.image}" alt="${meal.title}">
         <h3 class="order-h3">${meal.title.toUpperCase()}</h3>
         <p class="order-p">${meal.description}</p>
         <span class="order-price">${meal.price}:-</span>
         <button class="button-black-add">+</button>
        `;
+        } else {
+            content = `
+        <img src="images/image_placeholder.jpg" alt="">
+        <h3 class="order-h3">${meal.title.toUpperCase()}</h3>
+        <p class="order-p">${meal.description}</p>
+        <span class="order-price">${meal.price}:-</span>
+        <button class="button-black-add">+</button>
+       `;
+        }
 
         //lägg till attribut och text
         articleEl.innerHTML = content;

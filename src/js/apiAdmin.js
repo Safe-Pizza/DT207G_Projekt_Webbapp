@@ -11,8 +11,6 @@ if (localStorage.getItem("admin_token")) {
     })
 }
 
-
-
 //funktion för att hämta meny från webbtjänst
 async function fetchMenuAdmin() {
     try {
@@ -40,7 +38,6 @@ async function createMeal(mealData) {
         console.log(res);
         if (res.ok) {
             fetchMenuAdmin();
-
         }
     } catch (err) {
         console.log("Error: ", err);
@@ -74,10 +71,9 @@ async function updateMeal(id, changedMealData) {
                 "authorization": `Bearer ${localStorage.getItem("admin_token")}`
             }
         })
-        console.log(res);
+        console.log("Result: " + res);
         if (res.ok) {
             fetchMenuAdmin();
-
         }
     } catch (err) {
         console.log("Error: ", err);
@@ -153,7 +149,6 @@ async function addMeal(e) {
     if (title.value === "") {
         errors.push("<li>Du måste fylla i titel</li>");
     }
-
     if (description.value === "") {
         errors.push("<li>Du måste fylla i beskrivning</li>");
     }
@@ -178,16 +173,21 @@ async function addMeal(e) {
 }
 
 async function changeMeal(mealChange) {
-
     let changeFormDivEl = document.getElementById("admin-change-form");
     changeFormDivEl.classList.remove("hidden");
 
     let changeFormEl = document.getElementById("change-form");
 
+    // FIX 1: Ta bort gammal knapp om den finns för att undvika dubbla lyssnare
+    const oldButton = changeFormEl.querySelector(".change-submit-btn");
+    if (oldButton) oldButton.remove();
+
     //skapa knapp för ändring
     let changeButtonEl = document.createElement("button");
     changeButtonEl.classList.add("button-red");
+    changeButtonEl.classList.add("change-submit-btn");
     changeButtonEl.innerHTML = "Ändra";
+    changeButtonEl.type = "button"; // Förhindra att knappen triggar form submit
 
     //lägg till knapp i DOM
     changeFormEl.appendChild(changeButtonEl);
@@ -206,9 +206,8 @@ async function changeMeal(mealChange) {
     category.value = mealChange.category;
     allergy.value = mealChange.allergy;
 
+    // FIX 2: All logik direkt i click-lyssnaren, ingen inbäddad submit-lyssnare
     changeButtonEl.addEventListener("click", () => {
-        console.log(mealChange.id);
-
         //Varibel för errors-element DOM
         let errorsEl = document.getElementById("errors-change");
         errorsEl.innerHTML = "";
@@ -220,7 +219,6 @@ async function changeMeal(mealChange) {
         if (title.value === "") {
             errors.push("<li>Du måste fylla i titel</li>");
         }
-
         if (description.value === "") {
             errors.push("<li>Du måste fylla i beskrivning</li>");
         }
@@ -236,51 +234,19 @@ async function changeMeal(mealChange) {
             errors.forEach(error => {
                 errorsEl.innerHTML += error;
             })
-        } else { //Vid inga felmeddelanden ändra i API
-            changeFormEl.addEventListener("submit", (e) => {
-                e.preventDefault();
-                //Varibel för errors-element DOM
-                let errorsEl = document.getElementById("errors-change");
-                errorsEl.innerHTML = "";
+        } else {
+            // FIX 3: Skapa FormData direkt här, ingen submit-lyssnare behövs
+            const formData = new FormData(changeFormEl);
 
-                //Array för felhantering
-                let errors = [];
+            //ta bort knapp och återställ formulär och göm formulär
+            changeButtonEl.remove();
+            changeFormEl.reset();
+            changeFormDivEl.classList.add("hidden");
 
-                //Validering av formulärdata, kontroll ej tom
-                if (title.value === "") {
-                    errors.push("<li>Du måste fylla i titel</li>");
-                }
-
-                if (description.value === "") {
-                    errors.push("<li>Du måste fylla i beskrivning</li>");
-                }
-                if (price.value === "") {
-                    errors.push("<li>Du måste fylla i pris</li>");
-                }
-                if (category.value === "") {
-                    errors.push("<li>Du måste fylla i kategori</li>");
-                }
-
-                //Skriv ut eventuella felmeddelanden
-                if (errors.length !== 0) {
-                    errors.forEach(error => {
-                        errorsEl.innerHTML += error;
-                    })
-                } else { //Vid inga felmeddelanden ändra i API
-                    //göm formulär
-                    //changeFormDivEl.classList.add("hidden");
-                    //ta bort knapp
-                    changeButtonEl.remove();
-                    changeFormEl.reset();
-                    //skapa FormData
-                    const formData = new FormData(e.target);
-                    //skicka till API
-                    // updateMeal(mealChange.id, formData);
-                }
-
-            })
+            //skicka till API
+            updateMeal(mealChange.id, formData);
         }
-    })
+    });
 }
 
 //togglefunktion för lägg till formulär

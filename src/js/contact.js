@@ -1,11 +1,15 @@
 "use strict";
 
+//lyssanre för toggleknapp för kontaktformulär
 document.querySelector("#button-contact-form").addEventListener("click", toggleContactForm);
+
+//kontroll knapp finns, lägg till eventlyssnare på knappen
 const buttonSubmitContact = document.querySelector("#button-submit-contact");
 if (buttonSubmitContact) {
     buttonSubmitContact.addEventListener("click", submitContactForm);
 }
 
+//visa meddelande när kontaktformuläret skickas in, göm formuläret
 function submitContactForm() {
     const messageEl = document.querySelector("#contact-message");
     const contactFormDivEl = document.querySelector("#contact-form");

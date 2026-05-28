@@ -1,5 +1,7 @@
+//lyssnare för knapp bokning av bord
 document.querySelector("#button-submit-table").addEventListener("click", submitTable);
 
+//funktion för att visa meddelande när bokning av bord skickas in
 function submitTable() {
     const email = document.querySelector("#table-email").value;
     const containerDivEl = document.querySelector("#table-message");

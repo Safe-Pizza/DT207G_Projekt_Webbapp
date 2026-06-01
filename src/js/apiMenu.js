@@ -10,6 +10,7 @@ async function fetchMenu() {
 
         if (response.ok) {
             writeMealsOfMenu(data);
+            document.querySelector(".loader").style.display = "none";
         } else return document.getElementById("menu-result").innerHTML = "";
     } catch (error) {
         console.error(`Felmeddelande ${error}`);

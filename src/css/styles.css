@@ -195,8 +195,35 @@ span.letter-red {
     margin-bottom: 1rem;
 }
 
+/*order p class*/
 .order-p {
     font-size: 1.6rem;
+}
+
+/*error message class*/
+.error-message {
+    font-size: 2rem;
+}
+
+/*loader class*/
+.loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #C0392B;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: loading 1s linear infinite;
+    margin: 2rem auto;
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /*navigation*/
@@ -661,6 +688,11 @@ main#admin article div {
     }
 
     .order-p {
+        font-size: 1.6rem;
+    }
+
+    /*error message class*/
+    .error-message {
         font-size: 1.6rem;
     }
 

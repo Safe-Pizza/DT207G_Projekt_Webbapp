@@ -10,6 +10,7 @@ async function fetchMenuOrder() {
 
         if (response.ok) {
             writeMealsOfMenuOrder(data);
+            document.querySelector(".loader").style.display = "none";
         } else return document.getElementById("order-result").innerHTML = "";
     } catch (error) {
         console.error(`Felmeddelande ${error}`);

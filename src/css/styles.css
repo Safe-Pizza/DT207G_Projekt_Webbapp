@@ -127,6 +127,10 @@ span.letter-red {
     border-radius: 5px;
 }
 
+.button-red:hover {
+    background-color: #b22d2d;
+}
+
 .button-black {
     background-color: #121212;
     box-sizing: border-box;
@@ -141,6 +145,10 @@ span.letter-red {
     border-radius: 5px;
 }
 
+.button-black:hover {
+    border-color: #b22d2d;
+}
+
 .button-black-add {
     background-color: #121212;
     box-sizing: border-box;
@@ -152,6 +160,10 @@ span.letter-red {
     color: white;
     border: 2px solid #8E2424;
     border-radius: 5px;
+}
+
+.button-black-add:hover {
+    border-color: #b22d2d;
 }
 
 .a-button {

@@ -43,6 +43,7 @@ async function requestLogin(username, password) {
         })
         //vid misslyckat login, felmeddlande
         if (!res.ok) {
+            document.querySelector("#errors").innerHTML = "<li>Fel användarnamn eller lösenord</li>";
             throw new Error("Misslyckades att logga in");
         } else { //vid lyckat login, spara token i localStorage och skicka användare till admin.html
             const data = await res.json();

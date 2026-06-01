@@ -13,11 +13,13 @@ if (localStorage.getItem("admin_token")) {
 
 //funktion för att hämta meny från webbtjänst
 async function fetchMenuAdmin() {
+    document.querySelector(".loader").classList.remove("hidden");
     try {
         const response = await fetch(`https://dt207g-back.onrender.com/api/menu`);
         const data = await response.json();
 
         if (response.ok) {
+            document.querySelector(".loader").style.display = "none";
             writeMealsOfMenuAdmin(data);
         } else return document.getElementById("admin-result").innerHTML = "";
     } catch (error) {
@@ -95,23 +97,23 @@ function writeMealsOfMenuAdmin(meals) {
         let aEl = document.createElement("a");
         let content = "";
 
-        if(meal.image) {
+        if (meal.image) {
 
-        content = `
+            content = `
         <h3 class="small-h3">${meal.title.toUpperCase()}</h3><span class="admin-price">${meal.price}:-</span>
         <p class="admin-description"><strong>Beskrivning:</strong> <br>${meal.description}</p>
         <p class="admin-category"><strong>Kategori:</strong>    ${meal.category}</p>
         <p class="admin-allergy"><strong>Allergener:</strong> ${meal.allergy}</p>
         <img src="${meal.image}" alt="${meal.title}">
        `;
-       } else {
-        content = `
+        } else {
+            content = `
         <h3 class="small-h3">${meal.title.toUpperCase()}</h3><span class="admin-price">${meal.price}:-</span>
         <p class="admin-description"><strong>Beskrivning:</strong> <br>${meal.description}</p>
         <p class="admin-category"><strong>Kategori:</strong>    ${meal.category}</p>
         <p class="admin-allergy"><strong>Allergener:</strong> ${meal.allergy}</p>
        `;
-       }
+        }
 
         //lägg till attribut och text
         aEl.href = `#admin-change-form`;

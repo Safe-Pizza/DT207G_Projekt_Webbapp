@@ -11,6 +11,7 @@ export default defineConfig({
                 table: resolve(__dirname, "table.html"),
                 contact: resolve(__dirname, "contact.html"),
                 allergy: resolve(__dirname, "allergy.html"),
+                order: resolve(__dirname, "order.html"),
                 login: resolve(__dirname, "login.html"),
                 admin: resolve(__dirname, "admin.html")
             }

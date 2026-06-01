@@ -3,18 +3,24 @@ document.querySelector("#button-submit-table").addEventListener("click", submitT
 
 //funktion för att visa meddelande när bokning av bord skickas in
 function submitTable() {
-    const email = document.querySelector("#table-email").value;
-    const containerDivEl = document.querySelector("#table-message");
+   const email = document.querySelector("#table-email").value;
+   const containerMessageDivEl = document.querySelector("#table-message");
+   const containerFormEl = document.querySelector("#table-form");
+   const tableTextEl = document.querySelector("#table-p");
 
-    containerDivEl.innerHTML = ""; // Rensa tidigare meddelanden
+   containerMessageDivEl.innerHTML = ""; // Rensa tidigare meddelanden
 
-    if(!email) {
-       let pEl = document.createElement("p")
-       pEl.innerHTML = "Tack för din bokning! Vi återkommer till dig med en bokningsbekräftelse inom kort.";
-       containerDivEl.appendChild(pEl);
-    } else {
-       let pEl = document.createElement("p")
-       pEl.innerHTML = `Tack för din bokning! Vi återkommer inom kort med en bokningsbekräftelse på mailadress: ${email}.`;
-       containerDivEl.appendChild(pEl);
-    }
+   if (!email) {
+      let pEl = document.createElement("p")
+      pEl.innerHTML = "Tack för din bokning! Vi återkommer till dig med en bokningsbekräftelse inom kort.";
+      containerMessageDivEl.appendChild(pEl);
+      containerFormEl.style.display = "none"; // Göm formuläret
+      tableTextEl.style.display = "none"; // Göm den inledande texten
+   } else {
+      let pEl = document.createElement("p")
+      pEl.innerHTML = `Tack för din bokning! Vi återkommer inom kort med en bokningsbekräftelse på mailadress: ${email}.`;
+      containerMessageDivEl.appendChild(pEl);
+      containerFormEl.style.display = "none"; // Göm formuläret
+      tableTextEl.style.display = "none"; // Göm den inledande texten
+   }
 }

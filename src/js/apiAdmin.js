@@ -14,7 +14,7 @@ if (localStorage.getItem("admin_token")) {
 //funktion för att hämta meny från webbtjänst
 async function fetchMenuAdmin() {
     try {
-        const response = await fetch(`http://localhost:5000/api/menu`);
+        const response = await fetch(`https://dt207g-back.onrender.com/api/menu`);
         const data = await response.json();
 
         if (response.ok) {
@@ -28,7 +28,7 @@ async function fetchMenuAdmin() {
 //funktion för POST i API, lägg till rätt i meny
 async function createMeal(mealData) {
     try {
-        const res = await fetch(`http://localhost:5000/api/menu`, {
+        const res = await fetch(`https://dt207g-back.onrender.com/api/menu`, {
             method: "POST",
             body: mealData,
             headers: {
@@ -47,7 +47,7 @@ async function createMeal(mealData) {
 //funktion för DELETE i API, ta bort rätt i meny
 async function deleteMeal(id) {
     try {
-        const res = await fetch(`http://localhost:5000/api/menu/${id}`, {
+        const res = await fetch(`https://dt207g-back.onrender.com/api/menu/${id}`, {
             method: "DELETE",
             headers: {
                 "authorization": `Bearer ${localStorage.getItem("admin_token")}`
@@ -64,7 +64,7 @@ async function deleteMeal(id) {
 //funktion för PUT i API, ändra befintlig rätt i meny
 async function updateMeal(id, changedMealData) {
     try {
-        const res = await fetch(`http://localhost:5000/api/menu/${id}`, {
+        const res = await fetch(`https://dt207g-back.onrender.com/api/menu/${id}`, {
             method: "PUT",
             body: changedMealData,
             headers: {

@@ -5,7 +5,7 @@ fetchMenuOrder();
 //funktion för att hämta meny från webbtjänst
 async function fetchMenuOrder() {
     try {
-        const response = await fetch(`http://localhost:5000/api/menu`);
+        const response = await fetch(`https://dt207g-back.onrender.com/api/menu`);
         const data = await response.json();
 
         if (response.ok) {

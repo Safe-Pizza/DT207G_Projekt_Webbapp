@@ -31,7 +31,7 @@ function loginUser() {
 //funktion för loginförsök till webbtjänst, sparar token vid lyckat login, skickar användare till admin.html
 async function requestLogin(username, password) {
     try {
-        const res = await fetch("http://localhost:5000/api/login", {
+        const res = await fetch("https://dt207g-back.onrender.com/api/login", {
             method: "POST",
             headers: {
                 "content-type": "application/json"

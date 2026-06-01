@@ -5,7 +5,7 @@ fetchMenu();
 //funktion för att hämta meny från webbtjänst
 async function fetchMenu() {
     try {
-        const response = await fetch(`http://localhost:5000/api/menu`);
+        const response = await fetch(`https://dt207g-back.onrender.com/api/menu`);
         const data = await response.json();
 
         if (response.ok) {
@@ -28,7 +28,7 @@ function writeMealsOfMenu(meals) {
         let articleEl = document.createElement("article");
 
         let content = `
-        <h3 class="small-h3">${meal.title.toUpperCase()}</h3><span class="admin-price">${meal.price}</span>
+        <h3 class="small-h3">${meal.title.toUpperCase()}</h3><span class="admin-price">${meal.price}:-</span>
         <p>${meal.description}</p>
        `;
 

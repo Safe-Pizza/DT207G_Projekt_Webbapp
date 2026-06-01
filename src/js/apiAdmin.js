@@ -189,7 +189,7 @@ async function changeMeal(mealChange) {
 
     let changeFormEl = document.getElementById("change-form");
 
-    // FIX 1: Ta bort gammal knapp om den finns för att undvika dubbla lyssnare
+    // Om det redan finns en ändra-knapp, ta bort den innan en ny skapas
     const oldButton = changeFormEl.querySelector(".change-submit-btn");
     if (oldButton) oldButton.remove();
 
@@ -197,7 +197,7 @@ async function changeMeal(mealChange) {
     let changeButtonEl = document.createElement("button");
     changeButtonEl.classList.add("button-red");
     changeButtonEl.classList.add("change-submit-btn");
-    changeButtonEl.innerHTML = "Ändra";
+    changeButtonEl.innerHTML = "ÄNDRA";
     changeButtonEl.type = "button"; // Förhindra att knappen triggar form submit
 
     //lägg till knapp i DOM
@@ -217,7 +217,7 @@ async function changeMeal(mealChange) {
     category.value = mealChange.category;
     allergy.value = mealChange.allergy;
 
-    // FIX 2: All logik direkt i click-lyssnaren, ingen inbäddad submit-lyssnare
+    // Lyssnare för ändra-knapp, validera input och skicka till API
     changeButtonEl.addEventListener("click", () => {
         //Varibel för errors-element DOM
         let errorsEl = document.getElementById("errors-change");
@@ -245,8 +245,7 @@ async function changeMeal(mealChange) {
             errors.forEach(error => {
                 errorsEl.innerHTML += error;
             })
-        } else {
-            // FIX 3: Skapa FormData direkt här, ingen submit-lyssnare behövs
+        } else { //vid inga felmeddelanden, skapa formData och skicka till API
             const formData = new FormData(changeFormEl);
 
             //ta bort knapp och återställ formulär och göm formulär

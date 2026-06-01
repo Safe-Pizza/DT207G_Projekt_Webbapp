@@ -29,8 +29,9 @@ function writeMealsOfMenu(meals) {
         let articleEl = document.createElement("article");
 
         let content = `
-        <h3 class="small-h3">${meal.title.toUpperCase()}</h3><span class="admin-price">${meal.price}:-</span>
-        <p>${meal.description}</p>
+        <h3 class="small-h3">${meal.title.toUpperCase()}</h3><span class="price">${meal.price}:-</span>
+        <p class="menu-description">${meal.description}</p>
+        <p class="menu-allergy"><strong>Allergener:</strong> ${meal.allergy}</p>
        `;
 
         //lägg till attribut och text

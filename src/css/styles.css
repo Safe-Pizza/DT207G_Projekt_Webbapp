@@ -72,9 +72,11 @@ h3 {
 }
 
 p {
-    max-width: 50ch;
+    max-width: 70ch;
     color: #B0B0B0;
     font-family: "Roboto Mono", monospace;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 main a {
@@ -170,7 +172,7 @@ span.letter-red {
 }
 
 /*span price class*/
-.admin-price {
+.price {
     font-size: 4.8rem;
     color: #C0392B;
     font-family: "Elsie", serif;
@@ -203,6 +205,11 @@ span.letter-red {
 /*error message class*/
 .error-message {
     font-size: 2rem;
+}
+
+/*allergy p class*/
+.menu-allergy {
+    font-size: 1.6rem;
 }
 
 /*loader class*/
@@ -484,6 +491,15 @@ ul.buttons-list a {
 }
 
 /*MENU-PAGE*/
+main#menu section {
+    max-width: 100%;
+    display: grid;
+    gap: 1%;
+}
+
+main#menu section p.menu-intro {
+    justify-self: center;
+}
 /*grid settings article menu*/
 main#menu section div article {
     display: grid;
@@ -498,10 +514,17 @@ main#menu section div article {
     align-content: center;
 }
 
-main#menu section div article span {
+#menu span.price {
     justify-self: end;
 }
 
+.menu-description {
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+.menu-allergy {
+    grid-area: 3 / 1 / 4 / 2;
+}
 
 /*CONTACT-PAGE*/
 /*img main contact*/
@@ -511,6 +534,18 @@ main#menu section div article span {
 }
 
 /*ORDER-PAGE*/
+
+main#order section {
+    max-width: 100%;
+    gap: 1%;
+    display: grid;
+}
+
+.order-intro {
+    justify-self: center;
+    margin-bottom: 2rem;
+}
+
 /*grid main order section div*/
 main#order section div {
     max-width: 96%;
@@ -669,14 +704,10 @@ main#admin article div {
 
     /*font classes sizes*/
     /*span price class*/
-    .admin-price {
+    .price {
         font-size: 3.6rem;
     }
-
-    .order-price {
-        font-size: 3.6rem;
-    }
-
+    
     /*smaller h3 class*/
     .small-h3 {
         font-size: 2.8rem;
@@ -805,8 +836,13 @@ main#admin article div {
         padding: 0.5rem;
     }
 
-    main#menu section div article p {
+    main#menu .menu-description {
         grid-area: 2 / 1 / 3 / 3;
+    }
+
+    main#menu .menu-allergy {
+        grid-area: 3 / 1 / 4 / 3;
+        font-size: 1.2rem;
     }
 
     /*grid main order section div*/

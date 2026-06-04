@@ -26,7 +26,7 @@ h1 {
 }
 
 h2 {
-    font-size: 9.6rem;
+    font-size: 9.4rem;
 }
 
 h3 {
@@ -499,10 +499,17 @@ ul.buttons-list a {
 }
 
 /*HOME-PAGE*/
+#home h2 {
+    font-size: 8.7rem;
+}
 /*img main home*/
 #home img {
     width: 100%;
     height: auto;
+}
+
+#main-image-mobile {
+    display: none;
 }
 
 /*MENU-PAGE*/
@@ -846,6 +853,17 @@ main#admin article div {
     /*settings home*/
     #main-image {
         display: none;
+    }
+
+    #main-image-mobile {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+
+    #main-image-mobile img {
+        width: 100%;
+        height: auto;
     }
 
     /*GRIDS*/
